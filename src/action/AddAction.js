@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { ADD, ADD_SUCCESS, ADD_FAIL } from './ActionTypes';
+import UrlProvider from '../common/UrlProvider';
 
 
 const axiosConfig = {
@@ -27,7 +28,7 @@ export const addError = error => ({
 export function addParameters(data) {
   return (dispatch) => {
     dispatch(addBegin());
-    return axios.post('http://localhost:8080/api/categories/', data, axiosConfig)
+    return axios.post(UrlProvider.getPath('categories'), data, axiosConfig)
       .then((response) => {
         dispatch(addSuccess(response));
       })

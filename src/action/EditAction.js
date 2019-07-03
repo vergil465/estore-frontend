@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { EDIT, EDIT_FAIL, EDIT_SUCCESS } from './ActionTypes';
+import UrlProvider from '../common/UrlProvider';
 
 
 const axiosConfig = {
@@ -27,7 +28,7 @@ export const editError = error => ({
 export function editParameters(data) {
   return (dispatch) => {
     dispatch(fetchCategory());
-    return axios.patch('http://localhost:8080/api/categories/', data, axiosConfig)
+    return axios.patch(UrlProvider.getPath('categories'), data, axiosConfig)
       .then((response) => {
         dispatch(fetchCategorySuccess(response));
       })

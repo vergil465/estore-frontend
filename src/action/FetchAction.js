@@ -4,6 +4,7 @@ import {
   FETCH_SUCCESS,
   FETCH_FAILURE,
 } from './ActionTypes';
+import UrlProvider from '../common/UrlProvider';
 
 export function fetchCategory() {
   return {
@@ -21,7 +22,7 @@ export function fetchCategorySuccess(data) {
 export function fetch() {
   return (dispatch) => {
     dispatch(fetchCategory());
-    return axios.get('http://localhost:8080/api/categories').then((response) => {
+    return axios.get(UrlProvider.getApiPath('categories')).then((response) => {
       dispatch(fetchCategorySuccess(response.data));
     });
   };

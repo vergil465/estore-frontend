@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { DELETE, DELETE_SUCCESS } from './ActionTypes';
+import UrlProvider from '../common/UrlProvider';
 
 
 const axiosConfig = {
@@ -22,7 +23,7 @@ export function fetchCategorySuccess(data) {
 export function deleteParameters(data) {
   return (dispatch) => {
     dispatch(fetchCategory());
-    return axios.delete('http://localhost:8080/api/categories/', { axiosConfig, data }).then((response) => {
+    return axios.delete(UrlProvider.getPath('categories'), { axiosConfig, data }).then((response) => {
       dispatch(fetchCategorySuccess(response));
     }).catch((error) => {
       alert(error);
