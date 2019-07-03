@@ -69,7 +69,7 @@ export default function reducer(state = initialState, action) {
     case DELETE_FAIL:
       return {
         ...state,
-        loader: true,
+        loader: false,
         errorMessages: action.error.response.data.errors,
       };
     default:
