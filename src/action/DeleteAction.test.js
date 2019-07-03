@@ -1,11 +1,11 @@
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
-import fetch from './FetchAction';
+import deleteParameters from './DeleteAction';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-describe('category fetch actions', () => {
+describe('category delete actions', () => {
   let store;
 
   beforeEach(() => {
@@ -20,20 +20,22 @@ describe('category fetch actions', () => {
         json: () => [],
       }
     ));
-    store.dispatch(fetch()).then(() => {
+    store.dispatch(deleteParameters()).then(() => {
       const storeActions = store.getActions();
-      expect(storeActions[0].type).toEqual('FETCH_INIT');
-      expect(storeActions[1].type).toEqual('FETCH_SUCCESS');
+      expect(storeActions[0].type).toEqual('DELETE');
+      expect(storeActions[1].type).toEqual('DELETE_SUCCESS');
       expect(storeActions[1].payload).toEqual([]);
     });
   });
 
   it('should call expected actions when status not Ok', () => {
-    window.fetch = jest.fn().mockImplementation(() => Promise.reject({ ok: false, status: 500 }));
-    store.dispatch(fetch()).then(() => {
+    window.fetch = jest.fn().mockImplementation(
+      () => Promise.reject({ ok: false, status: 500, json: () => [] })
+    );
+    store.dispatch(deleteParameters()).then(() => {
       const storeActions = store.getActions();
       expect(storeActions.length).toBe(1);
-      expect(storeActions[0].value).toEqual('FETCH_INIT');
+      expect(storeActions[0].value).toEqual('DELETE');
     });
   });
 });

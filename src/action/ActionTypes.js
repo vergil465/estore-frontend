@@ -1,6 +1,5 @@
 export const FETCH_INIT = 'FETCH_INIT';
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
-export const FETCH_FAILURE = 'FETCH_FAILURE';
 export const ADD = 'ADD';
 export const ADD_SUCCESS = 'ADD_SUCCESS';
 export const ADD_FAIL = 'ADD_FAIL';

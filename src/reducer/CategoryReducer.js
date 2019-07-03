@@ -8,7 +8,6 @@ import {
   EDIT,
   EDIT_FAIL,
   EDIT_SUCCESS,
-  FETCH_FAILURE,
   FETCH_INIT,
   FETCH_SUCCESS,
 } from '../action/ActionTypes';
@@ -65,7 +64,6 @@ export default function reducer(state = initialState, action) {
         loader: false,
         category: list,
       };
-    case FETCH_FAILURE:
     case ADD_FAIL:
     case EDIT_FAIL:
     case DELETE_FAIL:
