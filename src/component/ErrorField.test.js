@@ -6,13 +6,14 @@ const props = {
   errorMessages: [
     'error1',
     'error2',
+    'error2',
   ],
 };
 
 describe('ErrorField test', () => {
   const wrapper = shallow(<ErrorField errors={props.errorMessages} />);
 
-  it('should render 2 list items based on props.errorMessages', () => {
+  it('should render 2 list items based on props.errorMessages where is 1 duplicate message', () => {
     expect(wrapper.find('.error-list').children()).toHaveLength(2);
     console.log(wrapper.debug());
   });

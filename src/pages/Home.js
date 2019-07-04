@@ -64,6 +64,7 @@ export class Home extends Component {
 
     delete = (categories) => {
       this.props.deleteParameters(categories);
+      this.setState({ categories: [] });
     };
 
     collect = item => this.setState({ categories: item });
