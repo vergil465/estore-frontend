@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const CategoryList = ({
   data, relationId, collector, selectedCategory,
@@ -36,5 +37,19 @@ const CategoryList = ({
   });
   return <ul key="category">{list}</ul>;
 };
+
+CategoryList.propTypes = {
+  data: PropTypes.oneOfType([PropTypes.array]),
+  relationId: PropTypes.number,
+  collector: PropTypes.func,
+  selectedCategory: PropTypes.oneOfType([PropTypes.array]),
+};
+
+CategoryList.defaultProps = {
+  data: [],
+  relationId: null,
+  selectedCategory: [],
+};
+
 
 export default CategoryList;

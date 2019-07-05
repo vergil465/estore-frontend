@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ErrorField = ({ errors }) => {
   const errorMessages = [];
@@ -16,6 +17,14 @@ const ErrorField = ({ errors }) => {
     }
   });
   return <ul className="error-list">{errorMessages}</ul>;
+};
+
+ErrorField.propTypes = {
+  errors: PropTypes.oneOfType([PropTypes.array]),
+};
+
+ErrorField.defaultProps = {
+  errors: [],
 };
 
 export default ErrorField;

@@ -11,6 +11,7 @@ import {
   Heading,
 } from 'react-simple-responsive-framework';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
   fetch,
   addParameters,
@@ -23,6 +24,17 @@ import {
 } from '../component';
 
 export class Home extends Component {
+    static propTypes = {
+      data: PropTypes.oneOfType([PropTypes.array]),
+      errorMessages: PropTypes.oneOfType([PropTypes.array]),
+      loader: PropTypes.bool,
+    };
+
+    static defaultProps = {
+      data: [],
+      errorMessages: [],
+    };
+
     state = {
       categories: [],
       name: null,
