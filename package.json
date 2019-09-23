@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start-dev": "webpack-dev-server --mode development --port 3000 --open --hot",
-    "start": "npm run build && node server.js",
+    "start": "node server.js",
     "build": "webpack --mode production",
     "transpile": "babel src -d dist --copy-files",
     "test": "jest",
